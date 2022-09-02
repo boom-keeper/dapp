@@ -3,6 +3,8 @@ import { WagmiConfig, createClient, chain, configureChains } from "wagmi";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import { ChakraProvider } from "@chakra-ui/react";
+import Header from "../src/common/features/Header";
 
 const { chains, provider } = configureChains(
   //   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
@@ -28,7 +30,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains} modalSize="compact">
-        <Component {...pageProps} />
+        <ChakraProvider>
+          <Header />
+          <Component {...pageProps} />
+        </ChakraProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );
