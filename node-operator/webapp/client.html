@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client</title>
+    <script src="common.js"></script>
+    <script src="client.js"></script>
+    
+</head>
+    <div>Node List : 
+        <select name="city" id="city" onchange="setCityAddress()">
+            <option value="0x13C920b7925A7569A1423a5940A374F0ed7de360">Seoul</option>
+            <option value="0x13C920b7925A7569A1423a5940A374F0ed7de360">NewYork</option>
+            <option value="0x13C920b7925A7569A1423a5940A374F0ed7de360">Bangkok</option>
+        </select>
+    </div>    
+    <div>CITY ADDRESS : <input type="text" id="city_addr" value="0x13C920b7925A7569A1423a5940A374F0ed7de360"><button onClick="addUpkeeper()">Upkeeper등록하기</button></div>
+    <div>KEEPER_REGSTRY : <input type="text" id="keeper_reg" value="0xd3F53ca52489D9C7Fc33c7C921AC4013A0040603"></div>
+
+    <div>잔액 : <input type="text" id="amt" value=""><button onClick="getAmt()">잔액조회</button></div>
+    <div>인출 : <input type="text" id="withdraw_amt" value=""><button onClick="withdraw()">인출하기</button></div>
+    <div>최소 유동성 금액 <input type="text" id="min_amt" value=""></div>
+    <div>기초 유동성 금액 <input type="text" id="avg_amt" value=""></div>
+
+    <div>
+        <textarea id="output" value="" style="width: 100%; height: 35em; border: none; resize: none;">
+    </textarea>
+    </div>
+    
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+
+</body>
+</html> 
+

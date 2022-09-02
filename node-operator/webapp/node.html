@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node</title>
+    <script src="common.js"></script>
+    <script src="node.js"></script>
+    
+</head>
+    <div>Node List : 
+        <select name="nodes" id="nodes">            
+            <option value="3d16727befd3285dc36fd611adf51b52c46711009008411bb8cb2a9e03d2888c">Node1</option>
+            <option value="4bd30ae2f241d08da4f2bb581a7dd14567862a4f1431009c454130673535c9f4">Node2</option>            
+        </select>
+    </div>
+    <div>KEEPER_REGSTRY : <input type="text" id="keeper_reg" value="0xd3F53ca52489D9C7Fc33c7C921AC4013A0040603"></div>
+    
+    <button onClick="checkUpkeeper()">callTest</button>
+
+    <button onClick="startSchedule()">startSchedule</button>
+    <button onClick="stopSchedule()">stopSchedule</button>
+    
+    <div>
+        <textarea id="output" value="" style="width: 100%; height: 35em; border: none; resize: none;">
+    </textarea>
+    </div>
+    
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+
+</body>
+</html> 
+
