@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+    
+</head>    
+    
+    <div>METAMASK_KEY : <input type="password" id="private_key" value=""></div>
+    <div>UPKEEPER_ADDR : <input type="text" id="upkeeper_add" value=""></div>
+    <div>KEEPER_REGSTRY : <input type="text" id="keeper_reg" value=""></div>
+
+
+    
+    <button onClick="callContract()">Call Contract</button>
+    <button onClick="startSchedule()">startSchedule</button>
+    <button onClick="stopSchedule()">stopSchedule</button>
+    <button onClick="connectWallet()">connectWallet</button>
+
+    <div>
+        <textarea id="output" value="" style="width: 100%; height: 35em; border: none; resize: none;">
+    </textarea>
+    </div>
+    
+
+
+
+
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+
+</body>
+</html> 
+
