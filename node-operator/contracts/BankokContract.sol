@@ -3,7 +3,7 @@ pragma solidity ^0.8.7;
 
 import "@chainlink/contracts/src/v0.8/KeeperCompatible.sol";
 
-contract NewyorkContract is KeeperCompatibleInterface {
+contract BangkokContract is KeeperCompatibleInterface {
     event Withdraw(uint256 ammount, string name, address sender);
     event ShortageAmt(uint256 ammount, string name, address sender);
     event ProvideAmt(uint256 ammount, string name, address sender);
