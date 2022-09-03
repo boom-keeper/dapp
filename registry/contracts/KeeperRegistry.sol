@@ -11,7 +11,7 @@ import "./interfaces/IKeeperCompatible.sol";
 import "./interfaces/IKeeperRegistry.sol";
 
 /**
- * @notice Registry for adding work for Chainlink Keepers to perform on client
+ * @notice Registry for adding work for BoomKeepers to perform on client
  * contracts. Clients must support the Upkeep interface.
  */
 contract KeeperRegistry is ConfirmedOwner, KeeperBase, ReentrancyGuard, Pausable, IKeeperRegistryExecutable {
