@@ -12,7 +12,7 @@ const Registry = () => {
   const toast = useCustomToast();
 
   const { config } = usePrepareContractWrite({
-    addressOrName: "0x595B999FaC4385b866661E5Bf254FEbFD1714Fab",
+    addressOrName: process.env.NEXT_PUBLIC_REGISTRY!,
     contractInterface: registryABI.abi,
     functionName: "registerUpkeep",
     args: [target, new BigNumber(2300).toString(), address, "0x00"],
