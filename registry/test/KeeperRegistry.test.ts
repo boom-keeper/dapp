@@ -58,7 +58,6 @@ describe("KeeperRegistry", () => {
   let payee3: Signer;
 
   let registry: KeeperRegistry;
-  let registry2: KeeperRegistry;
   let mock: UpkeepMock;
 
   let id: BigNumber;
@@ -83,13 +82,6 @@ describe("KeeperRegistry", () => {
       blockCountPerTurn,
       checkGasLimit,
       maxPerformGas,
-      registrar: ethers.constants.AddressZero,
-    });
-    registry2 = await keeperRegistryFactory.connect(owner).deploy({
-      blockCountPerTurn,
-      checkGasLimit,
-      maxPerformGas,
-      registrar: ethers.constants.AddressZero,
     });
     mock = await upkeepMockFactory.deploy();
 
@@ -327,12 +319,10 @@ describe("KeeperRegistry", () => {
       });
 
       it("returns true with pricing info if the target can execute", async () => {
-        const newGasMultiplier = BigNumber.from(10);
         await registry.connect(owner).setConfig({
           blockCountPerTurn,
           checkGasLimit,
           maxPerformGas,
-          registrar: ethers.constants.AddressZero,
         });
         const response = await registry.connect(zeroAddress).callStatic.checkUpkeep(id, await keeper1.getAddress());
         assert.isTrue(response.gasLimit.eq(executeGas));
@@ -604,7 +594,6 @@ describe("KeeperRegistry", () => {
           blockCountPerTurn: checks,
           checkGasLimit: maxGas,
           maxPerformGas,
-          registrar: ethers.constants.AddressZero,
         }),
         "Only callable by owner",
       );
@@ -618,7 +607,6 @@ describe("KeeperRegistry", () => {
         blockCountPerTurn: checks,
         checkGasLimit: maxGas,
         maxPerformGas,
-        registrar: ethers.constants.AddressZero,
       });
 
       const updated = (await registry.getState()).config;
@@ -631,7 +619,6 @@ describe("KeeperRegistry", () => {
         blockCountPerTurn: checks,
         checkGasLimit: maxGas,
         maxPerformGas,
-        registrar: ethers.constants.AddressZero,
       });
       await expect(tx).to.emit(registry, "ConfigSet").withArgs([checks, maxGas, maxPerformGas]);
     });

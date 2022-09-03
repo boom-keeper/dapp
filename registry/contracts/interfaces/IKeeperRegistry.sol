@@ -13,7 +13,6 @@ struct Config {
     uint24 blockCountPerTurn;
     uint32 checkGasLimit;
     uint32 maxPerformGas;
-    address registrar;
 }
 
 /**
