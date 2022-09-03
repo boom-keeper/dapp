@@ -41,7 +41,7 @@ async function getAmt(){
     setData("avg_amt", amtJson._avg_amt.toNumber());
 }
 
-async function withdraw(){
+async function withdraw(){ 
     const withdraw_amt = getData('withdraw_amt');
     
     logOutput("금액 (" + withdraw_amt + " ) 출금 중!!!!!");

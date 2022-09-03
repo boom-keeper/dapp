@@ -41,7 +41,7 @@ async function checkUpkeeper(){
                     return;
                 }
             }else{
-                logOutput("Registyr에서 대상 Upkeeper 검색 실패");
+                logOutput("Registyr에서 처리 대상 Upkeeper 없음");
                  return;
             }
         }else{
@@ -74,7 +74,7 @@ async function callCheckUpkeeper(upkeeperAddr, signer){
     const provider = getProvider();    
     const address = await signer.getAddress();
     console.log(address);
-
+ 
     const approveTxUnsigned = await keeperRegistry.populateTransaction.performUpkeep(upkeeperAddr, checkUpkeep.upkeepNeeded);
     approveTxUnsigned.chainId = 5; // chainId 1 for Ethereum mainnet
     approveTxUnsigned.gasLimit = 10000000;
@@ -86,6 +86,8 @@ async function callCheckUpkeeper(upkeeperAddr, signer){
     const submittedTx = await provider.sendTransaction(approveTxSigned);
     const approveReceipt = await submittedTx.wait();
     
+    logOutput("Registry 에 performUpkeep 실행 완료");
+
     return checkUpkeep.upkeepNeeded;
 }
 
@@ -99,4 +101,9 @@ function startSchedule(){
 
 function stopSchedule(){
   clearInterval(timerId);
+}
+
+function clearOutput(){
+	const output = document.getElementById("output");
+    output.value = "";	
 }
