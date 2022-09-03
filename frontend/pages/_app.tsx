@@ -4,13 +4,13 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { ChakraProvider } from "@chakra-ui/react";
-import Header from "../src/common/features/Header";
+import Header from "../src/features/Header";
 
 const { chains, provider } = configureChains(
   //   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [chain.goerli],
   [
-    alchemyProvider({ apiKey: "dCQDoMQTsnzhCdUscKkDf-AFd15FUr3Z" }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY }),
     publicProvider(),
   ]
 );
