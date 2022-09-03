@@ -76,3 +76,4 @@ function getData(id){
     const idEle = document.getElementById(id);
     return idEle.value;
 }
+
