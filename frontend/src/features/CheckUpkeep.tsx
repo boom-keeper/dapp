@@ -20,14 +20,13 @@ const CheckUpkeep = () => {
     contractInterface: registryABI.abi,
     functionName: "getActiveUpkeepIDs",
     args: ["0", "0"],
+    onError(error) {
+      console.log(error.message);
+    },
   });
 
   return (
     <>
-      {error && (
-        <div>An error occurred preparing the transaction: {error.message}</div>
-      )}
-
       <Flex direction="column" gap="30px">
         <div>
           <Text fontSize="20px" fontWeight="bold" color="blue.600" pb="8px">
@@ -36,7 +35,11 @@ const CheckUpkeep = () => {
           <UpkeepListTable>
             {isConnected ? (
               activeUpkeeps?.map((upkeep) => (
-                <Upkeep upkeepId={upkeep._hex} isOnlyMyUpkeep={false} />
+                <Upkeep
+                  upkeepId={upkeep._hex}
+                  isOnlyMyUpkeep={false}
+                  key={upkeep._hex}
+                />
               ))
             ) : (
               <Flex
@@ -58,7 +61,11 @@ const CheckUpkeep = () => {
           </Text>
           <UpkeepListTable>
             {activeUpkeeps?.map((upkeep) => (
-              <Upkeep upkeepId={upkeep._hex} isOnlyMyUpkeep={false} />
+              <Upkeep
+                upkeepId={upkeep._hex}
+                isOnlyMyUpkeep={false}
+                key={upkeep._hex}
+              />
             ))}
           </UpkeepListTable>
         </div>
@@ -93,22 +100,18 @@ const Upkeep = ({
 }) => {
   const { address } = useAccount();
 
-  const {
-    data: dataDetail,
-    isError,
-    isLoading,
-    error,
-  } = useContractRead({
+  const { data: dataDetail } = useContractRead({
     addressOrName: process.env.NEXT_PUBLIC_REGISTRY!,
     contractInterface: registryABI.abi,
     functionName: "getUpkeep",
     args: [upkeepId],
+    onError(error) {
+      console.error(error.message);
+    },
   });
 
-  console.log({ dataDetail }, { error });
-
-  if (!dataDetail) return null;
-  if (isOnlyMyUpkeep && dataDetail[5] !== address) return null;
+  if (!dataDetail) return <></>;
+  if (isOnlyMyUpkeep && dataDetail[5] !== address) return <></>;
 
   return (
     <Tr>
