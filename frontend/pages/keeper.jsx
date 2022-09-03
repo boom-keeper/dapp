@@ -3,8 +3,11 @@ import "@rainbow-me/rainbowkit/styles.css";
 import Registry from "../src/features/Registry";
 import CheckUpkeep from "../src/features/CheckUpkeep";
 import { Button, Divider, Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 const Keepers = () => {
+  const router = useRouter();
+
   let timerId = 0;
 
   const abiRegistryJson2 = [
@@ -1334,7 +1337,7 @@ const Keepers = () => {
   }
 
   async function callCheckUpkeeper(id, upkeeperAddr, signer) {
-    id = "0xa20ba77b5e2856515e791e9c59453de7fa94484d994673762debc58ebe92e1a1";
+    id = router.query.id;
     console.log(upkeeperAddr);
     const KEEPER_REGISTRY = document.getElementById("keeper_reg").value;
     const upkeeper = new ethers.Contract(

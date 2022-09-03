@@ -2,8 +2,11 @@ import { NextPage } from "next";
 import "@rainbow-me/rainbowkit/styles.css";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Text, Image, Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
+
   return (
     <header>
       <Flex
@@ -12,7 +15,12 @@ const Header = () => {
         marginX="auto"
         justifyContent="space-between"
       >
-        <Flex justifyContent="center" alignItems="center" gap="6px">
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          gap="6px"
+          onClick={() => router.push("/")}
+        >
           <Image
             src="https://avatars.githubusercontent.com/u/112223515?s=64&v=4"
             w="38px"

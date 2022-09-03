@@ -9,6 +9,7 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import { useAccount, useContractRead } from "wagmi";
 import registryABI from "../abis/KeeperRegistry.json";
@@ -99,6 +100,7 @@ const Upkeep = ({
   isOnlyMyUpkeep: boolean;
 }) => {
   const { address } = useAccount();
+  const router = useRouter();
 
   const { data: dataDetail } = useContractRead({
     addressOrName: process.env.NEXT_PUBLIC_REGISTRY!,
@@ -114,7 +116,7 @@ const Upkeep = ({
   if (isOnlyMyUpkeep && dataDetail[5] !== address) return <></>;
 
   return (
-    <Tr>
+    <Tr onClick={() => router.push(`keeper?id=${upkeepId}`)}>
       <Td>{upkeepId}</Td>
       <Td color="green" fontWeight="bold">
         Active
