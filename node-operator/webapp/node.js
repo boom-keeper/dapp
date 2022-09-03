@@ -100,3 +100,4 @@ function startSchedule(){
 function stopSchedule(){
   clearInterval(timerId);
 }
+
